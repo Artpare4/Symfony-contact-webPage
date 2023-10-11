@@ -17,3 +17,20 @@ Placez vous dans le répertoire de travail pour télécharger cs-fixer et entrez
 composer require friendsofphp/php-cs-fixer --dev
 ```
 
+## Liste commande
+
+Pour lancer un serveur symfony:
+``` 
+composer start
+```
+
+### Cs-fixer:
+Pour lancer les tests cs-fixer:
+```
+composer text:cs
+```
+
+Pour modifier voter code avec cs-fixer:
+```
+composer fix:cs
+```
