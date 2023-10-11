@@ -47,6 +47,7 @@
             "symfony/flex": true,
             "symfony/runtime": true
         },
+        "process-timeout": 0,
         "sort-packages": true
     },
     "autoload": {
@@ -78,8 +79,18 @@
         ],
         "post-update-cmd": [
             "@auto-scripts"
+        ],
+        "start": [
+            "symfony serve"
+        ],
+        "test:cs": [
+            "php vendor/bin/php-cs-fixer fix --dry-run --diff"
+        ],
+        "fix:cs": [
+            "php vendor/bin/php-cs-fixer fix"
         ]
     },
+
     "conflict": {
         "symfony/symfony": "*"
     },
