@@ -110,5 +110,10 @@
         "symfony/phpunit-bridge": "^6.3",
         "symfony/stopwatch": "6.3.*",
         "symfony/web-profiler-bundle": "6.3.*"
+    },
+    "scripts-descriptions": {
+        "start": "Run symfony server",
+        "test:cs": "Run cs-fixer tests",
+        "fix:cs": "Run cs-fixer to rewrite your code with more conformity"
     }
 }
