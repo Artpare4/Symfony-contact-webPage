@@ -19,6 +19,8 @@ class HelloController extends AbstractController
     #[Route('/hello/{name}')]
     public function world(string $name): Response
     {
+        $name = preg_replace('@<(.+)[^>]*>.*?@is', '', $name);
+
         return new Response("Hello {$name}");
     }
 }
