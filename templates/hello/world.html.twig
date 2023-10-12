@@ -2,7 +2,7 @@
 
   {% block title %}Hello {{ name }}!{% endblock %}
 {% block body %}
-  {% for i in 0..9 %}
-    <p>Hello {{ name }} !</p>
+  {% for i in 1..10 %}
+    <p>Hello {{ name }} ! ({{ i }})</p>
   {% endfor %}
 {% endblock %}
