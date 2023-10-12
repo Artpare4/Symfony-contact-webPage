@@ -1,9 +1,6 @@
-{{ include('base.html.twig') }}
-<html>
-    <head>
-    <title>Hello {{ name }}!</title>
-    </head>
-    <body>
-        <p>Hello {{ name }} !</p>
-    </body>
-</html>
+{% extends 'base.html.twig'%}
+
+  {% block title %}Hello {{ name }}!{% endblock %}
+{% block body %}
+<p>Hello {{ name }} !</p>
+{% endblock %}
