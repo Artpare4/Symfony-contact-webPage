@@ -21,6 +21,6 @@ class HelloController extends AbstractController
     {
         $name = preg_replace('@<(.+)[^>]*>.*?@is', '', $name);
 
-        return new Response("Hello {$name}");
+        return $this->render('hello/world.html.twig');
     }
 }
