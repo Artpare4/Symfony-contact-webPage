@@ -2,7 +2,8 @@
 
   {% block title %}Hello {{ name }}!{% endblock %}
 {% block body %}
+  {% set color = ['green','red'] %}
   {% for i in 1..10 %}
-    <p>Hello {{ name }} ! ({{ i }})</p>
+    <p style="color: {{ cycle(color,i) }}">Hello {{ name }} ! ({{ i }})</p>
   {% endfor %}
 {% endblock %}
