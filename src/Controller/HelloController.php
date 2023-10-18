@@ -23,4 +23,8 @@ class HelloController extends AbstractController
 
         return $this->render('hello/world.html.twig', ['name' => $name]);
     }
+
+    public function manyTimes()
+    {
+    }
 }
