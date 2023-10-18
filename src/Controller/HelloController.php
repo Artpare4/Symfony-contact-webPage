@@ -27,6 +27,9 @@ class HelloController extends AbstractController
     #[Route('/hello/{name}/{times}', name: 'app_hello_manytimes', requirements: ['times' => '\d+'])]
     public function manyTimes(string $name, int $times)
     {
+        if ($times > 10 || $times <= 0) {
+            $times = 3;
+        }
         return $this->render('hello/many_times.html.twig', ['name' => $name, 'times' => $times]);
     }
 }
