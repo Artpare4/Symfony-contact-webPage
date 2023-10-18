@@ -24,12 +24,13 @@ class HelloController extends AbstractController
         return $this->render('hello/world.html.twig', ['name' => $name]);
     }
 
-    #[Route('/hello/{name}/{times}', name: 'app_hello_manytimes', requirements: ['times' => '\d+'])]
-    public function manyTimes(string $name, int $times)
+    #[Route('/hello/{name}/{times?3}', name: 'app_hello_manytimes', requirements: ['times' => '\d+'])]
+    public function manyTimes(string $name, int $times): Response
     {
         if ($times > 10 || $times <= 0) {
             $times = 3;
         }
+
         return $this->render('hello/many_times.html.twig', ['name' => $name, 'times' => $times]);
     }
 }
