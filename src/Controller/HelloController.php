@@ -24,8 +24,8 @@ class HelloController extends AbstractController
         return $this->render('hello/world.html.twig', ['name' => $name]);
     }
 
-    #[Route('//hello/{name}/{times}')]
-    public function manyTimes()
+    #[Route('/hello/{name}/{times}', name: 'app_hello_manytimes')]
+    public function manyTimes(string $name, int $times)
     {
     }
 }
