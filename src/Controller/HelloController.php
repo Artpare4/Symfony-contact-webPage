@@ -16,14 +16,6 @@ class HelloController extends AbstractController
         ]);
     }
 
-    #[Route('/hello/{name}')]
-    public function world(string $name): Response
-    {
-        $name = preg_replace('@<(.+)[^>]*>.*?@is', '', $name);
-
-        return $this->render('hello/world.html.twig', ['name' => $name]);
-    }
-
     #[Route('/hello/{name}/{times?3}', name: 'app_hello_manytimes', requirements: ['times' => '\d+'])]
     public function manyTimes(string $name, int $times): Response
     {
