@@ -34,3 +34,15 @@ Pour modifier voter code avec cs-fixer:
 ```
 composer fix:cs
 ```
+
+
+### Tests:
+Exécute les tests de code codeception
+```
+composer test:codeception
+```
+
+Exécute les tests de cs-fixer et de code codeception
+```
+composer test
+```

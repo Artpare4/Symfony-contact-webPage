@@ -89,6 +89,14 @@
         ],
         "fix:cs": [
             "php vendor/bin/php-cs-fixer fix"
+        ],
+        "test:codeception": [
+            "codecept clean",
+            "php vendor/bin/codecept run"
+        ],
+        "test": [
+            "@test:cs",
+            "@test:codeception"
         ]
     },
 
