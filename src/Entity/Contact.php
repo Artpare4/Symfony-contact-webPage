@@ -16,10 +16,10 @@ class Contact
     #[ORM\Column(length: 30)]
     private ?string $firstname = null;
 
-    #[ORM\Column(length: 30)]
+    #[ORM\Column(length: 40)]
     private ?string $lastname = null;
 
-    #[ORM\Column(length: 30)]
+    #[ORM\Column(length: 100)]
     private ?string $email = null;
 
     public function getId(): ?int
