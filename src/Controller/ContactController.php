@@ -16,7 +16,8 @@ class ContactController extends AbstractController
 
         return $this->render('contact/index.html.twig', ['contacts' => $res]);
     }
-    #[Route('/contact/{contactId}')]
+
+    #[Route('/contact/{contactId}', requirements: ['contactId' => '\d+'])]
     public function show(int $contactId)
     {
     }
