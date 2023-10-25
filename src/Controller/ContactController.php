@@ -20,5 +20,6 @@ class ContactController extends AbstractController
     #[Route('/contact/{contactId}', requirements: ['contactId' => '\d+'])]
     public function show(int $contactId)
     {
+        return $this->render('contact/show.html.twig');
     }
 }
