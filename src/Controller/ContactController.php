@@ -14,6 +14,6 @@ class ContactController extends AbstractController
     {
         $res = $contact->findBy(['firstname' => 'ASC', 'lastname' => 'ASC']);
 
-        return $this->render();
+        return $this->render('contact/index.html.twig', ['contact' => $res]);
     }
 }
