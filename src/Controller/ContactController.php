@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Repository\ContactRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Routing\Annotation\Route;
 
 class ContactController extends AbstractController
@@ -20,6 +21,11 @@ class ContactController extends AbstractController
     #[Route('/contact/{contactId}', requirements: ['contactId' => '\d+'])]
     public function show(ContactRepository $contact, int $contactId): Response
     {
-        return $this->render('contact/show.html.twig');
+        $res = $contact->findBy(['id' => $contactId]);
+        if (!$res) {
+            throw new NotFoundHttpException('L\'entité n\'existe pas ');
+        }
+
+        return $this->render('contact/show.html.twig', ['contact' => $res]);
     }
 }
