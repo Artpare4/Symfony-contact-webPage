@@ -140,6 +140,7 @@
         "start": "Run symfony server",
         "test:cs": "Run cs-fixer tests",
         "fix:cs": "Run cs-fixer to rewrite your code with more conformity",
-        "db": "Crée une nouvelle base de donnée selon le modèle doctrine et génrère des valeurs aléatoires"
+        "db": "Crée une nouvelle base de donnée selon le modèle doctrine et génrère des valeurs aléatoires",
+        "test:codeception": "Crée une nouvelle base de donnée de tests puis lance les tests"
     }
 }

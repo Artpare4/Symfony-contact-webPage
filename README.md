@@ -37,7 +37,7 @@ composer fix:cs
 
 
 ### Tests:
-Exécute les tests de code codeception
+Crée une nouvelle base de donnée pour les tests  puis les exécutes 
 ```
 composer test:codeception
 ```
