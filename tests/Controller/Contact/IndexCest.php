@@ -28,7 +28,7 @@ class IndexCest
         $I->seeCurrentRouteIs('app_contact_show');
     }
 
-    public function ckeckValueOrder(ControllerTester $I): void
+    public function ckeckValuesOrder(ControllerTester $I): void
     {
         ContactFactory::createSequence([
             ['firstname' => 'Joe', 'lastname' => 'A'],
