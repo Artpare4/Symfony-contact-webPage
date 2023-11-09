@@ -51,8 +51,8 @@ final class ContactFactory extends ModelFactory
     {
 
         return [
-            'firstname' => $this->normalizeName(self::faker()->firstName()),
-            'lastname' => $this->normalizeName(self::faker()->lastName()),
+            'firstname' => $this->normalizeName($this->Transliterator->transliterate(self::faker()->firstName())),
+            'lastname' => $this->normalizeName($this->Transliterator->transliterate(self::faker()->lastName())),
             'email' => mb_strtolower($this->Transliterator->transliterate('lastname-firstname@')).self::faker()->domainName(),
         ];
     }
