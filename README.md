@@ -46,3 +46,17 @@ Exécute les tests de cs-fixer et de code codeception
 ```
 composer test
 ```
+
+### Base de donnée :
+
+Crée une nouvelle base de donnée selon le modèle doctrine et génrère des valeurs aléatoires
+```
+composer db
+```
+
+Structure de la base de donnée:
+- Contact:
+  - Id (entier) : id du contact
+  - firstname (chaîne de caractère): prénom du contact
+  - lastname (chaîne de caractère): nom de famille du contact
+  - email (chaîne de caractère): email du contact

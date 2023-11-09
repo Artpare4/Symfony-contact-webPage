@@ -135,6 +135,7 @@
     "scripts-descriptions": {
         "start": "Run symfony server",
         "test:cs": "Run cs-fixer tests",
-        "fix:cs": "Run cs-fixer to rewrite your code with more conformity"
+        "fix:cs": "Run cs-fixer to rewrite your code with more conformity",
+        "db": "Crée une nouvelle base de donnée selon le modèle doctrine et génrère des valeurs aléatoires"
     }
 }
