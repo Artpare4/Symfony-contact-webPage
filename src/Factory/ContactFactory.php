@@ -49,11 +49,13 @@ final class ContactFactory extends ModelFactory
      */
     protected function getDefaults(): array
     {
+        $prnm = $this->normalizeName($this->Transliterator->transliterate(self::faker()->firstName()));
+        $nom = $this->normalizeName($this->Transliterator->transliterate(self::faker()->lastName()));
 
         return [
-            'firstname' => $this->normalizeName($this->Transliterator->transliterate(self::faker()->firstName())),
-            'lastname' => $this->normalizeName($this->Transliterator->transliterate(self::faker()->lastName())),
-            'email' => mb_strtolower($this->Transliterator->transliterate('lastname-firstname@')).self::faker()->domainName(),
+            'firstname' => $prnm,
+            'lastname' => $nom,
+            'email' => mb_strtolower($this->Transliterator->transliterate($nom.'-'.$prnm.'@')).self::faker()->domainName(),
         ];
     }
 

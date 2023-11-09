@@ -54,7 +54,7 @@ Crée une nouvelle base de donnée selon le modèle doctrine et génrère des va
 composer db
 ```
 
-Structure de la base de donnée:
+Structure de la base de données:
 - Contact:
   - Id (entier) : id du contact
   - firstname (chaîne de caractère): prénom du contact
