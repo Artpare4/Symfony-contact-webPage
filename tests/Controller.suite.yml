@@ -8,4 +8,5 @@ modules:
               environment: 'test'
         - Asserts:
         - Doctrine2:
+              depends: Symfony
               cleanup: true
