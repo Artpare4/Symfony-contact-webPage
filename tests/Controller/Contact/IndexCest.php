@@ -19,10 +19,12 @@ class IndexCest
 
     public function checkRoadLink(ControllerTester $I): void
     {
-
+        ContactFactory::createOne(['firstname' => 'Joe', 'lastname' => 'Aaaaaaaaaaaaaaa']);
+        ContactFactory::createMany(5);
         $I->amOnPage('/contact');
         $I->seeResponseCodeIsSuccessful();
-        $I->click('Andre - Sébastien');
+        $I->click('Aaaaaaaaaaaaaaa, Joe');
+        $I->seeResponseCodeIsSuccessful();
         $I->seeCurrentRouteIs('app_contact_show');
     }
 }
