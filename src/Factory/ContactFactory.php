@@ -29,7 +29,6 @@ use Zenstruck\Foundry\RepositoryProxy;
  */
 final class ContactFactory extends ModelFactory
 {
-    private \Transliterator $Translitrator;
     private ?\Transliterator $Transliterator;
 
     /**
@@ -40,7 +39,7 @@ final class ContactFactory extends ModelFactory
     public function __construct()
     {
         parent::__construct();
-        $this->Transliterator = \Transliterator::create(1);
+        $this->Transliterator = \Transliterator::create('Any-Latin; Latin-ASCII');
     }
 
     /**
@@ -54,7 +53,7 @@ final class ContactFactory extends ModelFactory
         return [
             'firstname' => $this->normalizeName(self::faker()->firstName()),
             'lastname' => $this->normalizeName(self::faker()->lastName()),
-            'email' => mb_strtolower(transliterator_transliterate('Any-Latin; Latin-ASCII', 'lastname-firstname@')).self::faker()->domainName(),
+            'email' => mb_strtolower($this->Transliterator->transliterate('lastname-firstname@')).self::faker()->domainName(),
         ];
     }
 
