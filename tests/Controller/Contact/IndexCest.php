@@ -27,4 +27,17 @@ class IndexCest
         $I->seeResponseCodeIsSuccessful();
         $I->seeCurrentRouteIs('app_contact_show');
     }
+
+    public function ckeckValueOrder(ControllerTester $I): void
+    {
+        ContactFactory::createSequence([
+            ['firstname' => 'Joe', 'lastname' => 'A'],
+            ['firstname' => 'Arthur', 'lastname' => 'B'],
+            ['firstname' => 'Erwan', 'lastname' => 'W'],
+            ['firstname' => 'Louise', 'lastname' => 'C'],
+        ]);
+        $I->amOnPage('/contact');
+        $contacts = $I->grabMultiple('a');
+        $I->assertEquals(['A, Joe', 'B, Arthur', 'C, Louise', 'W, Erwan'], $contacts);
+    }
 }
