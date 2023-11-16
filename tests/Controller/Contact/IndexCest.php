@@ -14,7 +14,7 @@ class IndexCest
         $I->seeResponseCodeIsSuccessful();
         $I->seeInTitle('Liste des contacts');
         $I->see('Liste des contacts', 'h1');
-        $I->seeNumberOfElements('a', 5);
+        $I->seeNumberOfElements('.contact', 5);
     }
 
     public function checkRoadLink(ControllerTester $I): void
@@ -37,7 +37,7 @@ class IndexCest
             ['firstname' => 'Louise', 'lastname' => 'C'],
         ]);
         $I->amOnPage('/contact');
-        $contacts = $I->grabMultiple('a');
+        $contacts = $I->grabMultiple('.contact');
         $I->assertEquals(['A, Joe', 'B, Arthur', 'C, Louise', 'W, Erwan'], $contacts);
     }
 }
