@@ -21,8 +21,22 @@ class ContactRepository extends ServiceEntityRepository
         parent::__construct($registry, Contact::class);
     }
 
+    /**
+     * @param string $txt contact que l'on recherche
+     *
+     * @return Contact[] Liste de contact
+     */
     public function search(string $txt = ''): array
     {
+        $request = $this->createQueryBuilder('contact')
+            ->from('contact', 'c')
+            ->where('contact.lastname LIKE \'%:txt%\' ')
+            ->orWhere('contact.firstname LIKE \'%:txt%\' ')
+            ->orderBy('contact.lastname')
+            ->orderBy('contact.firstname');
+        $query = $request->getQuery();
+
+        return $query->execute();
     }
 
     //    /**
