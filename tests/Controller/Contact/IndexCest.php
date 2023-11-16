@@ -40,4 +40,36 @@ class IndexCest
         $contacts = $I->grabMultiple('.contact');
         $I->assertEquals(['A, Joe', 'B, Arthur', 'C, Louise', 'W, Erwan'], $contacts);
     }
+
+    public function testSearchFromIndex(ControllerTester $I): void
+    {
+        ContactFactory::createSequence([
+            ['firstname' => 'Bing', 'lastname' => 'A'],
+            ['firstname' => 'Arthur', 'lastname' => 'Bing'],
+            ['firstname' => 'Erwan', 'lastname' => 'W'],
+            ['firstname' => 'Louise', 'lastname' => 'C'],
+        ]);
+        $I->amOnPage('/contact');
+        $I->fillField('search', 'Bing');
+        $I->click('Chercher');
+        $contacts = $I->grabMultiple('.contact');
+        $I->seeResponseCodeIsSuccessful();
+        $I->assertEquals(['A, Bing', 'Bing, Arthur'], $contacts);
+    }
+
+    public function testSearchFromContactInfo(ControllerTester $I): void
+    {
+        ContactFactory::createSequence([
+            ['firstname' => 'Bing', 'lastname' => 'A'],
+            ['firstname' => 'Arthur', 'lastname' => 'Bing'],
+            ['firstname' => 'Erwan', 'lastname' => 'W'],
+            ['firstname' => 'Louise', 'lastname' => 'C'],
+        ]);
+        $I->amOnPage('/contact/2');
+        $I->fillField('search', 'Bing');
+        $I->click('Chercher');
+        $contacts = $I->grabMultiple('.contact');
+        $I->seeResponseCodeIsSuccessful();
+        $I->assertEquals(['A, Bing', 'Bing, Arthur'], $contacts);
+    }
 }
