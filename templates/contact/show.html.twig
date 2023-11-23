@@ -8,6 +8,10 @@
     <dl>
         <dt>Email: </dt>
         <dd>{{ contact.email }}</dd>
+        <dt>Téléphone:</dt>
+        <dd>{{ contact.phone }}</dd>
+        <dt>Catégorie</dt>
+        <dd>{{ contact.category.name ?? 'Empty'}}</dd>
     </dl>
 {% endblock %}
 
