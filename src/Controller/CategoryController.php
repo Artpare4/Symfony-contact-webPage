@@ -24,7 +24,7 @@ class CategoryController extends AbstractController
     #[Route('/category/{id}', name: 'app_category_show', requirements: ['id' => '\d+'])]
     public function show(Category $category, ContactRepository $contactRepository): Response
     {
-        $contacts = $contactRepository->findBy(['category' => $category->getId()]);
+        $contacts = $contactRepository->findBy(['category' => $category->getId()], ['lastname' => 'ASC', 'firstname' => 'ASC']);
 
         return $this->render('category/show.html.twig', ['catg' => $category, 'contacts' => $contacts,
         ]);
