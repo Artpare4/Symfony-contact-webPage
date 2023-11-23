@@ -16,8 +16,6 @@ class CategoryController extends AbstractController
     {
         $catg = $repository->findAllAlphabeticallyWithContactCount();
 
-        dump($catg);
-
         return $this->render('category/index.html.twig', [
             'catgs' => $catg,
         ]);
