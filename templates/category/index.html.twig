@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello CategoryController!{% endblock %}
+{% block title %}Liste catégories{% endblock %}
 
 {% block body %}
 <style>
@@ -9,12 +9,11 @@
 </style>
 
 <div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/working/pare0028/symfony-contacts/src/Controller/CategoryController.php'|file_link(0) }}">src/Controller/CategoryController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/working/pare0028/symfony-contacts/templates/category/index.html.twig'|file_link(0) }}">templates/category/index.html.twig</a></code></li>
+    <h1>Liste catégories</h1>
+    <ul class="contacts">
+    {% for catg in catgs %}
+        <li class="contact"><a href="{{ path('app_category_show',{'id':catg.id})}}"><span class="name">{{ catg.name }}</span></a></li>
+    {% endfor %}
     </ul>
 </div>
 {% endblock %}
