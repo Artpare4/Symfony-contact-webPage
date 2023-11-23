@@ -56,7 +56,8 @@ final class ContactFactory extends ModelFactory
             'firstname' => $prnm,
             'lastname' => $nom,
             'email' => mb_strtolower($this->Transliterator->transliterate($nom.'-'.$prnm.'@')).self::faker()->domainName(),
-        ];
+            'phone' => self::faker()->phoneNumber(),
+            ];
     }
 
     /**
