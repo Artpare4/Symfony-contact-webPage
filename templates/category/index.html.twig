@@ -11,8 +11,16 @@
 <div class="example-wrapper">
     <h1>Liste catégories</h1>
     <ul class="contacts">
+
     {% for catg in catgs %}
-        <li class="contact"><a href="{{ path('app_category_show',{'id':catg.category.id})}}"><span class="name">{{ catg.category.name }}</span></a></li>
+        {% set Count=catg.count %}
+        {% set category=catg.category %}
+        <li class="contact">
+            <a href="{{ path('app_category_show',{'id':category.id})}}">
+                <span class="name">{{ category.name }}</span>
+                <span class="badge bg-secondary">{{ Count }}</span>
+            </a>
+        </li>
     {% endfor %}
     </ul>
 </div>
