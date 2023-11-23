@@ -15,10 +15,14 @@ class CategoryController extends AbstractController
     public function index(CategoryRepository $repository): Response
     {
         $catg = $repository->createQueryBuilder('p')
+            ->addSelect('COUNT(c) as count')
             ->leftJoin('p.contacts', 'c')
         ->orderBy('p.name', 'ASC')
+        ->groupBy('p.name')
         ->getQuery()
         ->getResult();
+
+        dump($catg);
 
         return $this->render('category/index.html.twig', [
             'catgs' => $catg,
