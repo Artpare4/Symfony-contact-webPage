@@ -12,7 +12,7 @@
     <h1>Liste catégories</h1>
     <ul class="contacts">
     {% for catg in catgs %}
-        <li class="contact"><a href="{{ path('app_category_show',{'id':catg.id})}}"><span class="name">{{ catg.name }}</span></a></li>
+        <li class="contact"><a href="{{ path('app_category_show',{'id':catg.category.id})}}"><span class="name">{{ catg.category.name }}</span></a></li>
     {% endfor %}
     </ul>
 </div>

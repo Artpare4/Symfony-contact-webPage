@@ -14,11 +14,12 @@ class CategoryController extends AbstractController
     #[Route('/category', name: 'app_category')]
     public function index(CategoryRepository $repository): Response
     {
-        $catg = $repository->createQueryBuilder('p')
-            ->addSelect('COUNT(c) as count')
-            ->leftJoin('p.contacts', 'c')
-        ->orderBy('p.name', 'ASC')
-        ->groupBy('p.name')
+        $catg = $repository->createQueryBuilder('c')
+            ->select('c as category')
+            ->leftJoin('App\Entity\Contact', 'con', 'WITH', 'c=con.category')
+            ->groupBy('c')
+            ->addSelect('COUNT(con) as count')
+            ->orderBy('c.name', 'ASC')
         ->getQuery()
         ->getResult();
 
