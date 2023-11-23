@@ -2,7 +2,6 @@
 
 namespace App\DataFixtures;
 
-use App\Entity\Category;
 use App\Factory\CategoryFactory;
 use App\Factory\ContactFactory;
 use Doctrine\Bundle\FixturesBundle\Fixture;

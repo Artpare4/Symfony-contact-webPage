@@ -29,8 +29,6 @@ class Contact
     #[ORM\ManyToOne(inversedBy: 'contacts')]
     private ?Category $category = null;
 
-
-
     public function __construct()
     {
         $this->contacts = new ArrayCollection();
@@ -100,5 +98,4 @@ class Contact
 
         return $this;
     }
-
 }
