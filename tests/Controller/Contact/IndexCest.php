@@ -37,7 +37,7 @@ class IndexCest
             ['firstname' => 'Louise', 'lastname' => 'C'],
         ]);
         $I->amOnPage('/contact');
-        $contacts = $I->grabMultiple('.contact');
+        $contacts = $I->grabMultiple('.name');
         $I->assertEquals(['A, Joe', 'B, Arthur', 'C, Louise', 'W, Erwan'], $contacts);
     }
 
@@ -52,7 +52,7 @@ class IndexCest
         $I->amOnPage('/contact');
         $I->fillField('search', 'Bing');
         $I->click('Chercher');
-        $contacts = $I->grabMultiple('.contact');
+        $contacts = $I->grabMultiple('.name');
         $I->seeResponseCodeIsSuccessful();
         $I->assertEquals(['A, Bing', 'Bing, Arthur'], $contacts);
     }
@@ -68,7 +68,7 @@ class IndexCest
         $I->amOnPage('/contact/2');
         $I->fillField('search', 'Bing');
         $I->click('Chercher');
-        $contacts = $I->grabMultiple('.contact');
+        $contacts = $I->grabMultiple('.name');
         $I->seeResponseCodeIsSuccessful();
         $I->assertEquals(['A, Bing', 'Bing, Arthur'], $contacts);
     }
