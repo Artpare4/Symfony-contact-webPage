@@ -29,15 +29,19 @@ class ContactRepository extends ServiceEntityRepository
     public function search(string $txt = ''): array
     {
         $request = $this->createQueryBuilder('contact')
+                ->leftJoin('App\Entity\Category', 'cat', 'WITH', 'contact.category=cat')
+                ->addSelect('cat')
                 ->where('contact.lastname LIKE :txt')
                 ->orWhere('contact.firstname LIKE :txt')
                 ->setParameter(':txt', '%'.$txt.'%')
                 ->orderBy('contact.firstname')
                 ->orderBy('contact.lastname');
 
-        $query = $request->getQuery();
+        $query = $request->getQuery()->execute();
 
-        return $query->execute();
+        return array_filter($query,function ($item){
+            return $item instanceof Contact;
+        });
     }
 
     /**
