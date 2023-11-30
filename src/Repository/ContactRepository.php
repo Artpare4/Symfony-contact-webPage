@@ -39,15 +39,11 @@ class ContactRepository extends ServiceEntityRepository
 
         $query = $request->getQuery()->execute();
 
-        return array_filter($query,function ($item){
+        return array_filter($query, function ($item) {
             return $item instanceof Contact;
         });
     }
 
-    /**
-     * @param int $id
-     * @return Contact|null
-     */
     public function findWithCategory(int $id): ?Contact
     {
         return $this->createQueryBuilder('c')
