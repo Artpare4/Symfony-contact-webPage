@@ -44,7 +44,9 @@ class ContactRepository extends ServiceEntityRepository
     {
         return $this->createQueryBuilder('c')
             ->leftJoin('App\Entity\Category', 'cat', 'WITH', 'c.category=cat')
-            ->addSelect('')
+            ->addSelect('cat.Category')
+            ->where('cat.id= :value')
+            ->setParameter(':value', $id)
             ->getQuery()
             ->getResult();
     }
