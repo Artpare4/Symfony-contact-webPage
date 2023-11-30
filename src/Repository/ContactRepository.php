@@ -40,15 +40,20 @@ class ContactRepository extends ServiceEntityRepository
         return $query->execute();
     }
 
+    /**
+     * @param int $id
+     * @return Contact|null
+     */
     public function findWithCategory(int $id): ?Contact
     {
         return $this->createQueryBuilder('c')
+            ->select('c')
             ->leftJoin('App\Entity\Category', 'cat', 'WITH', 'c.category=cat')
-            ->addSelect('cat.Category')
-            ->where('cat.id= :value')
+            ->addSelect('cat')
+            ->where('c.id=:value')
             ->setParameter(':value', $id)
             ->getQuery()
-            ->getResult();
+            ->execute()[0];
     }
     //    /**
     //     * @return Contact[] Returns an array of Contact objects
