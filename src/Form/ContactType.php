@@ -30,7 +30,6 @@ class ContactType extends AbstractType
                         ->orderBy('c.name', 'ASC');
                 },
                 'required' => false,
-                'placeholder' => 'Catégory ?',
             ])
         ;
     }

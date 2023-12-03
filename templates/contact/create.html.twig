@@ -7,7 +7,11 @@
 {% block body %}
     <h1>Création d'un nouveau contact</h1>
     {{ form_start(form) }}
-    {{ form_widget(form) }}
+    {{ form_row(form.firstname, {'label':'Prénom'}) }}
+    {{ form_row(form.lastname, {'label':'Nom'}) }}
+    {{ form_row(form.email, {'label':'Adresse Mail'}) }}
+    {{ form_row(form.phone, {'label':'Numéro de téléphone'}) }}
+    {{ form_row(form.category, {'label':'Catégorie', 'placeholder':'Category ?'}) }}
     <button class="w-100 btn btn-primary " type="submit">Ajouter</button>
     {{ form_end(form) }}
 {% endblock %}
