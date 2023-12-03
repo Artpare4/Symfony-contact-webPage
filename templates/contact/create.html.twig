@@ -6,12 +6,5 @@
 
 {% block body %}
     <h1>Création d'un nouveau contact</h1>
-    {{ form_start(form) }}
-    {{ form_row(form.firstname, {'label':'Prénom'}) }}
-    {{ form_row(form.lastname, {'label':'Nom'}) }}
-    {{ form_row(form.email, {'label':'Adresse Mail'}) }}
-    {{ form_row(form.phone, {'label':'Numéro de téléphone'}) }}
-    {{ form_row(form.category, {'label':'Catégorie', 'placeholder':'Category ?'}) }}
-    <button class="w-100 btn btn-primary " type="submit">Ajouter</button>
-    {{ form_end(form) }}
+    {{ include('contact/_form.html.twig',{submit_label : 'Ajouter', form : form},with_context = false) }}
 {% endblock %}
