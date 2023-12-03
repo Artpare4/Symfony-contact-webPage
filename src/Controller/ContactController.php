@@ -49,7 +49,7 @@ class ContactController extends AbstractController
             $entityManager->flush();
 
             return $this->redirectToRoute('app_contact_show', [
-                'id' => $contact->getId()
+                'id' => $contact->getId(),
             ]);
         }
 
@@ -57,10 +57,20 @@ class ContactController extends AbstractController
     }
 
     #[Route('/contact/create', name: 'app_contact_create', requirements: ['id' => '\d+'])]
-    public function create()
+    public function create(Request $request, EntityManagerInterface $entityManager)
     {
         $contact = new Contact();
-        $form = $this->createForm(ContactType::class, $contact);
+        $form = $this->createForm(ContactType::class);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $contact = $form->getData();
+            $entityManager->persist($contact);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('app_contact_show', [
+                'id' => $contact->getId(),
+            ]);
+        }
 
         return $this->render('contact/create.html.twig', ['form' => $form]);
     }
