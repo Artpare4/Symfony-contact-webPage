@@ -2,7 +2,7 @@
 <ul class="contacts">
     {% for contact in contacts %}
     <li class="contact" style="list-style: inside">
-            <a class="name" href="{{ path('app_contact_show',{'id':contact.id})}}"><span class="lastname">{{ contact.lastname }}</span>, <span class="firstname">{{contact.firstname}}</span></a>
+        <span class="material-symbols-outlined">edit</span><span class="material-symbols-outlined">delete</span><a class="name" href="{{ path('app_contact_show',{'id':contact.id})}}"><span class="lastname">{{ contact.lastname }}</span>, <span class="firstname">{{contact.firstname}}</span></a>
         {% if show_category??true and contact.category is not null %}
         <a class="nav-link" href="{{ path('app_category_show',{'id':contact.category.id}) }}">
                 <span class="badge bg-secondary">{{ contact.category.name}}</span>
