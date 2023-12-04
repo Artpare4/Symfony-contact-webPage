@@ -14,6 +14,7 @@ class CategoryController extends AbstractController
     #[Route('/category', name: 'app_category')]
     public function index(CategoryRepository $repository): Response
     {
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED');
         $catg = $repository->findAllAlphabeticallyWithContactCount();
 
         return $this->render('category/index.html.twig', [
@@ -24,6 +25,7 @@ class CategoryController extends AbstractController
     #[Route('/category/{id}', name: 'app_category_show', requirements: ['id' => '\d+'])]
     public function show(Category $category, ContactRepository $contactRepository): Response
     {
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED');
         $contacts = $contactRepository->findBy(['category' => $category->getId()], ['lastname' => 'ASC', 'firstname' => 'ASC']);
 
         return $this->render('category/show.html.twig', ['catg' => $category, 'contacts' => $contacts,
