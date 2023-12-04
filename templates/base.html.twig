@@ -50,7 +50,7 @@
                         </li>
                         <li class="nav-item">
                             {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-                            <a href="{{ path('app_logout') }}" class="btn btn-primary">Déconnexion</a>
+                            <a href="{{ path('app_logout') }}" class="btn btn-danger">Déconnexion</a>
                             {% else %}
                             <a href="{{ path('app_login') }}" class="btn btn-primary">Connexion</a>
                             {% endif %}
