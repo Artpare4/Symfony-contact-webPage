@@ -48,6 +48,14 @@
                         <li class="nav-item">
                             <a class="nav-link disabled">Disabled</a>
                         </li>
+                        <li class="nav-item">
+                            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                            <a href="{{ path('app_logout') }}" class="btn btn-primary">Déconnexion</a>
+                            {% else %}
+                            <a href="{{ path('app_login') }}" class="btn btn-primary">Connexion</a>
+                            {% endif %}
+                        </li>
+
                     </ul>
                     <form class="d-flex" role="search" action="{{ path('app_contact') }}" c>
                         <input class="form-control me-2" type="search" placeholder="Chercher" aria-label="Search" name="search" value="{{ search|default("") }}">
