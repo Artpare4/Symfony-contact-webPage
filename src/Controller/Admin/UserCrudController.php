@@ -25,11 +25,6 @@ class UserCrudController extends AbstractCrudController
         return User::class;
     }
 
-    public function updateEntity(EntityManagerInterface $entityManager, $entityInstance): void
-    {
-        parent::updateEntity($entityManager, $entityInstance);
-    }
-
     public function configureFields(string $pageName): iterable
     {
         return [
@@ -44,5 +39,20 @@ class UserCrudController extends AbstractCrudController
             ->setFormTypeOption('attr', ['autocomplete' => 'new-password']),
             ArrayField::new('roles'),
         ];
+    }
+
+    public function updateEntity(EntityManagerInterface $entityManager, $entityInstance): void
+    {
+        $password = $this->getContext()->getRequest()->get('User')['password'];
+        $this->setUserPassword($password, $entityInstance);
+        parent::updateEntity($entityManager, $entityInstance);
+    }
+
+    private function setUserPassword(mixed $password, $entityInstance): void
+    {
+        if (!empty($password)) {
+            $hashedPassword = $this->hasher->hashPassword($entityInstance, $password);
+            $entityInstance->setPassword($hashedPassword);
+        }
     }
 }
