@@ -37,7 +37,17 @@ class UserCrudController extends AbstractCrudController
             ->setRequired(false)
             ->setEmptyData('')
             ->setFormTypeOption('attr', ['autocomplete' => 'new-password']),
-            ArrayField::new('roles'),
+            ArrayField::new('roles')
+            ->formatValue(function ($role) {
+                if ('ROLE_ADMIN' == $role) {
+                    return '<span class="material-symbols-outlined">
+manage_accounts </span>';
+                } else {
+                    return '<span class="material-symbols-outlined">
+person
+</span>';
+                }
+            }),
         ];
     }
 
@@ -47,6 +57,7 @@ class UserCrudController extends AbstractCrudController
         $this->setUserPassword($password, $entityInstance);
         parent::updateEntity($entityManager, $entityInstance);
     }
+
     public function setUserPassword(mixed $password, $entityInstance): void
     {
         if (!empty($password)) {
@@ -54,6 +65,7 @@ class UserCrudController extends AbstractCrudController
             $entityInstance->setPassword($hashedPassword);
         }
     }
+
     public function persistEntity(EntityManagerInterface $entityManager, $entityInstance): void
     {
         $password = $this->getContext()->getRequest()->get('User')['password'];
