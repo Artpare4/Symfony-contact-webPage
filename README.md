@@ -1,5 +1,11 @@
 # Symfony contact
+![Static Badge](https://img.shields.io/badge/BUT-S3-teal)
+![Static Badge](https://img.shields.io/badge/Symfony-6.3-blue) 
 ## Parent Arthur
+
+Site web en Symfony listant des contacts. 
+Il m'a permis de me familiariser avec les concepts de symfony et doctine orm. Notamment le système de routes, la création d'entité/formulaires avec le makeBundle, le système de migration, etc...
+
 ## Installation/Configuration
 
 ## Installation du répertoire:
@@ -60,3 +66,16 @@ Structure de la base de données:
   - firstname (chaîne de caractère): prénom du contact
   - lastname (chaîne de caractère): nom de famille du contact
   - email (chaîne de caractère): email du contact
+
+### Utilisateurs: 
+#### User1 : 
+- email : root@example.com
+- firstname : Tony
+- lastname : Stark
+- roles  : ['ROLE_ADMIN']
+
+#### User2:
+- email : user@example.com
+- firstname : Peter
+- lastname : Parker 
+- roles : ['ROLE_USER']
